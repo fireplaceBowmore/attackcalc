@@ -20,150 +20,90 @@
   </style>
 </head>
 <body>
-  <table>
-    <thead>
-      <tr>
-        <th>Col 1</th>
-        <th>Col 2</th>
-        <th>Col 3</th>
-        <th>Col 4</th>
-        <th>Col 5</th>
-        <th>Col 6</th>
-        <th>Col 7</th>
-        <th>Sum</th>
-      </tr>
-    </thead>
+  <h2>6 × 8 Table</h2>
+  <table id="table1">
+    <tbody>
+      <!-- 6 rows, 8 columns -->
+      <script>for(let i=0;i<6;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>4 × 8 Table #1</h2>
+  <table id="table2">
+    <tbody>
+      <script>for(let i=0;i<4;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>4 × 8 Table #2</h2>
+  <table id="table3">
+    <tbody>
+      <script>for(let i=0;i<4;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>3 × 8 Table</h2>
+  <table id="table4">
+    <tbody>
+      <script>for(let i=0;i<3;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>6 × 8 Table #2</h2>
+  <table id="table5">
+    <tbody>
+      <script>for(let i=0;i<6;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>7 × 8 Table</h2>
+  <table id="table6">
+    <tbody>
+      <script>for(let i=0;i<7;i++){document.write('<tr>');for(let j=0;j<8;j++){document.write('<td><input type="number" oninput="updateSums()" /></td>');}document.write('</tr>')}</script>
+    </tbody>
+  </table>
+
+  <h2>Result: 2 × 8 Table (Column Sums)</h2>
+  <table id="resultTable">
     <tbody>
       <tr>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
-        <td id="sum0">0</td>
+        <script>for(let j=0;j<8;j++){document.write('<td id="sumRow0col'+j+'">0</td>')}</script>
       </tr>
       <tr>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
-        <td id="sum1">0</td>
-      </tr>
-      <tr>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
-        <td id="sum2">0</td>
-      </tr>
-      <tr>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
-        <td id="sum3">0</td>
-      </tr>
-      <tr>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
-        <td id="sum4">0</td>
+        <script>for(let j=0;j<8;j++){document.write('<td id="sumRow1col'+j+'">0</td>')}</script>
       </tr>
     </tbody>
   </table>
 
   <script>
-    // Add error handling for calcSum
-    function calcSum(row) {
-      try {
-        const tr = document.querySelectorAll('tbody tr')[row];
-        if (!tr) throw new Error('Row not found');
-        
-        let sum = 0;
-        tr.querySelectorAll('input[type="number"]').forEach(input => {
-          const value = Number(input.value);
-          // Check for invalid numbers
-          if (input.value && isNaN(value)) {
-            throw new Error('Invalid number input');
-          }
-          sum += value || 0;
-        });
-        
-        const sumElement = document.getElementById('sum' + row);
-        if (!sumElement) throw new Error('Sum element not found');
-        sumElement.innerText = sum;
-      } catch (error) {
-        console.error('Error in calcSum:', error);
-      }
-    }
-
-    // Add error handling for saveTableData
-    function saveTableData() {
-      try {
-        const rows = document.querySelectorAll('tbody tr');
-        const data = [];
-        rows.forEach(tr => {
-          const row = [];
-          tr.querySelectorAll('input[type="number"]').forEach(input => {
-            row.push(input.value);
-          });
-          data.push(row);
-        });
-        localStorage.setItem('tableData', JSON.stringify(data));
-      } catch (error) {
-        console.error('Error saving table data:', error);
-      }
-    }
-
-    // Add error handling for loadTableData
-    function loadTableData() {
-      try {
-        const savedData = localStorage.getItem('tableData');
-        if (!savedData) return;
-        
-        const data = JSON.parse(savedData);
-        if (!Array.isArray(data)) throw new Error('Invalid saved data format');
-        
-        const rows = document.querySelectorAll('tbody tr');
-        data.forEach((row, i) => {
-          if (!Array.isArray(row)) throw new Error('Invalid row format');
-          if (rows[i]) {
-            const inputs = rows[i].querySelectorAll('input[type="number"]');
-            row.forEach((value, j) => {
-              if (inputs[j]) {
-                inputs[j].value = value || '';
-              }
-            });
+    function updateSums() {
+      // Gather all tables
+      const tableIds = ['table1','table2','table3','table4','table5','table6'];
+      let colSums = Array(8).fill(0);
+      let colSums2 = Array(8).fill(0);
+      let allRows = [];
+      // Collect all rows from all tables
+      tableIds.forEach(id => {
+        const rows = document.querySelectorAll(`#${id} tbody tr`);
+        allRows = allRows.concat(Array.from(rows));
+      });
+      // Sum columns for all rows (first row for sumRow0, second for sumRow1)
+      allRows.forEach((row, idx) => {
+        row.querySelectorAll('input[type="number"]').forEach((input, colIdx) => {
+          const val = parseFloat(input.value) || 0;
+          if (idx % 2 === 0) {
+            colSums[colIdx] += val;
+          } else {
+            colSums2[colIdx] += val;
           }
         });
-        
-        // Recalculate sums after loading
-        rows.forEach((_, i) => calcSum(i));
-      } catch (error) {
-        console.error('Error loading table data:', error);
-        // Clear potentially corrupted data
-        localStorage.removeItem('tableData');
+      });
+      // Update result table
+      for (let j = 0; j < 8; j++) {
+        document.getElementById('sumRow0col'+j).innerText = colSums[j];
+        document.getElementById('sumRow1col'+j).innerText = colSums2[j];
       }
     }
-
-    // Add DOMContentLoaded event listener for more reliable initialization
-    document.addEventListener('DOMContentLoaded', loadTableData);
   </script>
 </body>
 </html>
-
