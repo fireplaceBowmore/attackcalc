@@ -15,6 +15,7 @@
     }
     input[type=number] {
       -moz-appearance: textfield; /* Firefox */
+      appearance: textfield; /* Standard */
     }
   </style>
 </head>
@@ -87,43 +88,81 @@
   </table>
 
   <script>
+    // Add error handling for calcSum
     function calcSum(row) {
-      const tr = document.querySelectorAll('tbody tr')[row];
-      let sum = 0;
-      tr.querySelectorAll('input[type="number"]').forEach(input => {
-        sum += Number(input.value) || 0;
-      });
-      document.getElementById('sum' + row).innerText = sum;
-    }
-
-    function saveTableData() {
-      const rows = document.querySelectorAll('tbody tr');
-      const data = [];
-      rows.forEach(tr => {
-        const row = [];
+      try {
+        const tr = document.querySelectorAll('tbody tr')[row];
+        if (!tr) throw new Error('Row not found');
+        
+        let sum = 0;
         tr.querySelectorAll('input[type="number"]').forEach(input => {
-          row.push(input.value);
+          const value = Number(input.value);
+          // Check for invalid numbers
+          if (input.value && isNaN(value)) {
+            throw new Error('Invalid number input');
+          }
+          sum += value || 0;
         });
-        data.push(row);
-      });
-      localStorage.setItem('tableData', JSON.stringify(data));
+        
+        const sumElement = document.getElementById('sum' + row);
+        if (!sumElement) throw new Error('Sum element not found');
+        sumElement.innerText = sum;
+      } catch (error) {
+        console.error('Error in calcSum:', error);
+      }
     }
 
-    function loadTableData() {
-      const data = JSON.parse(localStorage.getItem('tableData') || '[]');
-      const rows = document.querySelectorAll('tbody tr');
-      data.forEach((row, i) => {
-        if (rows[i]) {
-          rows[i].querySelectorAll('input[type="number"]').forEach((input, j) => {
-            input.value = row[j] || '';
+    // Add error handling for saveTableData
+    function saveTableData() {
+      try {
+        const rows = document.querySelectorAll('tbody tr');
+        const data = [];
+        rows.forEach(tr => {
+          const row = [];
+          tr.querySelectorAll('input[type="number"]').forEach(input => {
+            row.push(input.value);
           });
-        }
-      });
-      // Recalculate sums after loading
-      rows.forEach((_, i) => calcSum(i));
+          data.push(row);
+        });
+        localStorage.setItem('tableData', JSON.stringify(data));
+      } catch (error) {
+        console.error('Error saving table data:', error);
+      }
     }
 
-    window.onload = loadTableData;
+    // Add error handling for loadTableData
+    function loadTableData() {
+      try {
+        const savedData = localStorage.getItem('tableData');
+        if (!savedData) return;
+        
+        const data = JSON.parse(savedData);
+        if (!Array.isArray(data)) throw new Error('Invalid saved data format');
+        
+        const rows = document.querySelectorAll('tbody tr');
+        data.forEach((row, i) => {
+          if (!Array.isArray(row)) throw new Error('Invalid row format');
+          if (rows[i]) {
+            const inputs = rows[i].querySelectorAll('input[type="number"]');
+            row.forEach((value, j) => {
+              if (inputs[j]) {
+                inputs[j].value = value || '';
+              }
+            });
+          }
+        });
+        
+        // Recalculate sums after loading
+        rows.forEach((_, i) => calcSum(i));
+      } catch (error) {
+        console.error('Error loading table data:', error);
+        // Clear potentially corrupted data
+        localStorage.removeItem('tableData');
+      }
+    }
+
+    // Add DOMContentLoaded event listener for more reliable initialization
+    document.addEventListener('DOMContentLoaded', loadTableData);
   </script>
 </body>
 </html>
