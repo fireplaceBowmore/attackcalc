@@ -42,8 +42,8 @@
     </thead>
     <tbody>
       <script>
-        let rowNames1 = ['A','B','C','D','E','F'];
-        for(let i=0;i<6;i++){
+        let rowNames1 = ['Item #1','B','C','D','E'];
+        for(let i=0;i<5;i++){
           document.write('<tr><th>'+rowNames1[i]+'</th>');
           for(let j=0;j<8;j++){
             document.write('<td><input type="number" oninput="updateSums()" /></td>');
@@ -76,8 +76,8 @@
     </thead>
     <tbody>
       <script>
-        let rowNames2 = ['A','B','C','D'];
-        for(let i=0;i<4;i++){
+        let rowNames2 = ['Item #2','B','C'];
+        for(let i=0;i<3;i++){
           document.write('<tr><th>'+rowNames2[i]+'</th>');
           for(let j=0;j<8;j++){
             document.write('<td><input type="number" oninput="updateSums()" /></td>');
@@ -110,11 +110,22 @@
     </thead>
     <tbody>
       <script>
-        let rowNames3 = ['A','B','C','D'];
-        for(let i=0;i<4;i++){
-          document.write('<tr><th>'+rowNames3[i]+'</th>');
+        let rowNames3 = ['Item #3','B','C'];
+        for(let i=0;i<3;i++){
+          document.write('<tr>');
+          // Lock first column for this table
+          if(i===0){
+            document.write('<th>'+rowNames3[i]+'</th>');
+          } else {
+            document.write('<th><input type="text" value="'+rowNames3[i]+'" readonly style="background:#eee;border:none;width:40px;text-align:center;"></th>');
+          }
           for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
+            // Lock first column (j==0) for all rows
+            if(j==0){
+              document.write('<td><input type="number" disabled style="background:#eee;" /></td>');
+            } else {
+              document.write('<td><input type="number" oninput="updateSums()" /></td>');
+            }
           }
           document.write('</tr>');
         }
@@ -144,8 +155,8 @@
     </thead>
     <tbody>
       <script>
-        let rowNames4 = ['A','B','C'];
-        for(let i=0;i<3;i++){
+        let rowNames4 = ['Item #4','B'];
+        for(let i=0;i<2;i++){
           document.write('<tr><th>'+rowNames4[i]+'</th>');
           for(let j=0;j<8;j++){
             document.write('<td><input type="number" oninput="updateSums()" /></td>');
@@ -178,8 +189,8 @@
     </thead>
     <tbody>
       <script>
-        let rowNames5 = ['A','B','C','D','E','F'];
-        for(let i=0;i<6;i++){
+        let rowNames5 = ['Item #5','B','C','D','E'];
+        for(let i=0;i<5;i++){
           document.write('<tr><th>'+rowNames5[i]+'</th>');
           for(let j=0;j<8;j++){
             document.write('<td><input type="number" oninput="updateSums()" /></td>');
@@ -212,8 +223,8 @@
     </thead>
     <tbody>
       <script>
-        let rowNames6 = ['A','B','C','D','E','F','G'];
-        for(let i=0;i<7;i++){
+        let rowNames6 = ['Item #6','B','C','D','E','F'];
+        for(let i=0;i<6;i++){
           document.write('<tr><th>'+rowNames6[i]+'</th>');
           for(let j=0;j<8;j++){
             document.write('<td><input type="number" oninput="updateSums()" /></td>');
