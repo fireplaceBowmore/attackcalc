@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>Interactive Table Sum</title>
+  <meta charset="UTF-8">
+  <title>7x5 Interactive Table with Row Sums</title>
   <style>
     table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
     input[type="number"] { width: 60px; }
+    th, td { text-align: center; }
+    /* Remove number input spinners (all browsers) */
+    input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
@@ -12,7 +16,6 @@
     input[type=number] {
       -moz-appearance: textfield; /* Firefox */
     }
-    th, td { text-align: center; }
   </style>
 </head>
 <body>
@@ -30,55 +33,54 @@
       </tr>
     </thead>
     <tbody>
-      <!-- 5 rows -->
       <tr>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
-        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(0); saveTableData()" /></td>
         <td id="sum0">0</td>
       </tr>
       <tr>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
-        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(1); saveTableData()" /></td>
         <td id="sum1">0</td>
       </tr>
       <tr>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
-        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(2); saveTableData()" /></td>
         <td id="sum2">0</td>
       </tr>
       <tr>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
-        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(3); saveTableData()" /></td>
         <td id="sum3">0</td>
       </tr>
       <tr>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
-        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
+        <td><input type="number" oninput="calcSum(4); saveTableData()" /></td>
         <td id="sum4">0</td>
       </tr>
     </tbody>
@@ -93,6 +95,35 @@
       });
       document.getElementById('sum' + row).innerText = sum;
     }
+
+    function saveTableData() {
+      const rows = document.querySelectorAll('tbody tr');
+      const data = [];
+      rows.forEach(tr => {
+        const row = [];
+        tr.querySelectorAll('input[type="number"]').forEach(input => {
+          row.push(input.value);
+        });
+        data.push(row);
+      });
+      localStorage.setItem('tableData', JSON.stringify(data));
+    }
+
+    function loadTableData() {
+      const data = JSON.parse(localStorage.getItem('tableData') || '[]');
+      const rows = document.querySelectorAll('tbody tr');
+      data.forEach((row, i) => {
+        if (rows[i]) {
+          rows[i].querySelectorAll('input[type="number"]').forEach((input, j) => {
+            input.value = row[j] || '';
+          });
+        }
+      });
+      // Recalculate sums after loading
+      rows.forEach((_, i) => calcSum(i));
+    }
+
+    window.onload = loadTableData;
   </script>
 </body>
 </html>
