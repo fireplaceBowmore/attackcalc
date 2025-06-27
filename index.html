@@ -1,66 +1,91 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>인터랙티브 DPS 계산기</title>
-  <link rel="stylesheet" href="sheet.css">
+  <title>Interactive Table Sum</title>
+  <style>
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    input[type="number"] { width: 60px; }
+    th, td { text-align: center; }
+  </style>
 </head>
 <body>
-  <h2>인터랙티브 DPS 계산기 (예시)</h2>
   <table>
     <thead>
       <tr>
-        <th>구분</th>
-        <th>수치</th>
-        <th>배수</th>
-        <th>DPS 증가량</th>
+        <th>Col 1</th>
+        <th>Col 2</th>
+        <th>Col 3</th>
+        <th>Col 4</th>
+        <th>Col 5</th>
+        <th>Col 6</th>
+        <th>Col 7</th>
+        <th>Sum</th>
       </tr>
     </thead>
     <tbody>
+      <!-- 5 rows -->
       <tr>
-        <td>투구</td>
-        <td><input type="number" id="helmet" value="400" oninput="recalc()"></td>
-        <td><input type="number" id="helmet-mult" value="1" step="0.1" oninput="recalc()"></td>
-        <td id="helmet-dps"></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td><input type="number" oninput="calcSum(0)" /></td>
+        <td id="sum0">0</td>
       </tr>
       <tr>
-        <td>주 무기</td>
-        <td><input type="number" id="main-weapon" value="1392" oninput="recalc()"></td>
-        <td><input type="number" id="main-weapon-mult" value="2" step="0.1" oninput="recalc()"></td>
-        <td id="main-weapon-dps"></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td><input type="number" oninput="calcSum(1)" /></td>
+        <td id="sum1">0</td>
       </tr>
       <tr>
-        <td>성장</td>
-        <td><input type="number" id="growth" value="427" oninput="recalc()"></td>
-        <td><input type="number" id="growth-mult" value="34.3" step="0.1" oninput="recalc()"></td>
-        <td id="growth-dps"></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td><input type="number" oninput="calcSum(2)" /></td>
+        <td id="sum2">0</td>
       </tr>
-      <!-- 필요에 따라 행 추가 -->
+      <tr>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td><input type="number" oninput="calcSum(3)" /></td>
+        <td id="sum3">0</td>
+      </tr>
+      <tr>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td><input type="number" oninput="calcSum(4)" /></td>
+        <td id="sum4">0</td>
+      </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="3">총 DPS</th>
-        <th id="total-dps"></th>
-      </tr>
-    </tfoot>
   </table>
+
   <script>
-    function recalc() {
-      // 각 항목의 DPS 계산 (예시: 수치 * 배수)
-      const helmet = Number(document.getElementById('helmet').value) * Number(document.getElementById('helmet-mult').value);
-      const mainWeapon = Number(document.getElementById('main-weapon').value) * Number(document.getElementById('main-weapon-mult').value);
-      const growth = Number(document.getElementById('growth').value) * Number(document.getElementById('growth-mult').value);
-
-      document.getElementById('helmet-dps').textContent = helmet.toLocaleString();
-      document.getElementById('main-weapon-dps').textContent = mainWeapon.toLocaleString();
-      document.getElementById('growth-dps').textContent = growth.toLocaleString();
-
-      // 총합
-      const total = helmet + mainWeapon + growth;
-      document.getElementById('total-dps').textContent = total.toLocaleString();
+    function calcSum(row) {
+      const tr = document.querySelectorAll('tbody tr')[row];
+      let sum = 0;
+      tr.querySelectorAll('input[type="number"]').forEach(input => {
+        sum += Number(input.value) || 0;
+      });
+      document.getElementById('sum' + row).innerText = sum;
     }
-    // 페이지 로드 시 초기 계산
-    window.onload = recalc;
   </script>
 </body>
 </html>
