@@ -20,220 +20,245 @@
   </style>
 </head>
 <body>
-  <h2>6 × 8 Table</h2>
-  <table id="table1">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames1 = ['Item #1','B','C','D','E'];
-        for(let i=0;i<5;i++){
-          document.write('<tr><th>'+rowNames1[i]+'</th>');
-          for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
-
-  <h2>4 × 8 Table #1</h2>
-  <table id="table2">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames2 = ['Item #2','B','C'];
-        for(let i=0;i<3;i++){
-          document.write('<tr><th>'+rowNames2[i]+'</th>');
-          for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
-
-  <h2>4 × 8 Table #2</h2>
-  <table id="table3">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames3 = ['Item #3','B','C'];
-        for(let i=0;i<3;i++){
-          document.write('<tr>');
-          // Lock first column for this table
-          if(i===0){
-            document.write('<th>'+rowNames3[i]+'</th>');
-          } else {
-            document.write('<th><input type="text" value="'+rowNames3[i]+'" readonly style="background:#eee;border:none;width:40px;text-align:center;"></th>');
-          }
-          for(let j=0;j<8;j++){
-            // Lock first column (j==0) for all rows
-            if(j==0){
-              document.write('<td><input type="number" disabled style="background:#eee;" /></td>');
-            } else {
-              document.write('<td><input type="number" oninput="updateSums()" /></td>');
+  <div style="display: flex; align-items: flex-start;">
+    <div style="flex: 1;">
+      <h2>6 × 8 Table</h2>
+      <table id="table1">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames1 = ['Item #1','B','C','D','E'];
+            for(let i=0;i<5;i++){
+              document.write('<tr><th>'+rowNames1[i]+'</th>');
+              for(let j=0;j<8;j++){
+                document.write('<td><input type="number" oninput="updateSums()" /></td>');
+              }
+              document.write('<td class="contrib"></td></tr>');
             }
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
+          </script>
+        </tbody>
+      </table>
 
-  <h2>3 × 8 Table</h2>
-  <table id="table4">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames4 = ['Item #4','B'];
-        for(let i=0;i<2;i++){
-          document.write('<tr><th>'+rowNames4[i]+'</th>');
-          for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
+      <h2>4 × 8 Table #1</h2>
+      <table id="table2">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames2 = ['Item #2','B','C'];
+            for(let i=0;i<3;i++){
+              document.write('<tr><th>'+rowNames2[i]+'</th>');
+              for(let j=0;j<8;j++){
+                document.write('<td><input type="number" oninput="updateSums()" /></td>');
+              }
+              document.write('<td class="contrib"></td></tr>');
+            }
+          </script>
+        </tbody>
+      </table>
 
-  <h2>6 × 8 Table #2</h2>
-  <table id="table5">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames5 = ['Item #5','B','C','D','E'];
-        for(let i=0;i<5;i++){
-          document.write('<tr><th>'+rowNames5[i]+'</th>');
-          for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
+      <h2>4 × 8 Table #2</h2>
+      <table id="table3">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames3 = ['Item #3','B','C'];
+            for(let i=0;i<3;i++){
+              document.write('<tr>');
+              if(i===0){
+                document.write('<th>'+rowNames3[i]+'</th>');
+              } else {
+                document.write('<th><input type="text" value="'+rowNames3[i]+'" readonly style="background:#eee;border:none;width:40px;text-align:center;"></th>');
+              }
+              for(let j=0;j<8;j++){
+                if(j==0){
+                  document.write('<td><input type="number" disabled style="background:#eee;" /></td>');
+                } else {
+                  document.write('<td><input type="number" oninput="updateSums()" /></td>');
+                }
+              }
+              document.write('<td class="contrib"></td></tr>');
+            }
+          </script>
+        </tbody>
+      </table>
 
-  <h2>7 × 8 Table</h2>
-  <table id="table6">
-    <thead>
-      <tr>
-        <th rowspan="2"></th>
-        <th colspan="3">공격력</th>
-        <th colspan="3">공격속도</th>
-        <th colspan="2">치명타 피해</th>
-      </tr>
-      <tr>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>수치 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-        <th>퍼센트 증가</th>
-        <th>배수 증가</th>
-      </tr>
-    </thead>
-    <tbody>
-      <script>
-        let rowNames6 = ['Item #6','B','C','D','E','F'];
-        for(let i=0;i<6;i++){
-          document.write('<tr><th>'+rowNames6[i]+'</th>');
-          for(let j=0;j<8;j++){
-            document.write('<td><input type="number" oninput="updateSums()" /></td>');
-          }
-          document.write('</tr>');
-        }
-      </script>
-    </tbody>
-  </table>
+      <h2>3 × 8 Table</h2>
+      <table id="table4">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames4 = ['Item #4','B'];
+            for(let i=0;i<2;i++){
+              document.write('<tr><th>'+rowNames4[i]+'</th>');
+              for(let j=0;j<8;j++){
+                document.write('<td><input type="number" oninput="updateSums()" /></td>');
+              }
+              document.write('<td class="contrib"></td></tr>');
+            }
+          </script>
+        </tbody>
+      </table>
+
+      <h2>6 × 8 Table #2</h2>
+      <table id="table5">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames5 = ['Item #5','B','C','D','E'];
+            for(let i=0;i<5;i++){
+              document.write('<tr><th>'+rowNames5[i]+'</th>');
+              for(let j=0;j<8;j++){
+                document.write('<td><input type="number" oninput="updateSums()" /></td>');
+              }
+              document.write('<td class="contrib"></td></tr>');
+            }
+          </script>
+        </tbody>
+      </table>
+
+      <h2>7 × 8 Table</h2>
+      <table id="table6">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th colspan="3">공격력</th>
+            <th colspan="3">공격속도</th>
+            <th colspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (%)</th>
+          </tr>
+          <tr>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+            <th>퍼센트 증가</th>
+            <th>배수 증가</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            let rowNames6 = ['Item #6','B','C','D','E','F'];
+            for(let i=0;i<6;i++){
+              document.write('<tr><th>'+rowNames6[i]+'</th>');
+              for(let j=0;j<8;j++){
+                document.write('<td><input type="number" oninput="updateSums()" /></td>');
+              }
+              document.write('<td class="contrib"></td></tr>');
+            }
+          </script>
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 260px; margin-left: 24px;">
+      <table style="width: 100%; margin-bottom: 16px;">
+        <tr><th colspan="2">기타</th></tr>
+        <tr><td>계정 레벨</td><td><input id="accountLevel" type="number" value="188" style="width: 80px;" oninput="updateSums()"></td></tr>
+        <tr><td>타워 레벨</td><td><input id="towerLevel" type="number" value="11" style="width: 80px;" oninput="updateSums()"></td></tr>
+        <tr><td>타워 공격력</td><td><input id="towerAtk" type="number" value="24" style="width: 80px;" oninput="updateSums()"></td></tr>
+        <tr><td>타워 공격속도</td><td><input id="towerSpd" type="number" value="0.4" style="width: 80px;" oninput="updateSums()"></td></tr>
+      </table>
+      <table style="width: 100%;">
+        <tr><th colspan="2">스테이지 시작 값</th></tr>
+        <tr><td>공격력</td><td id="sidebarAtk">0</td></tr>
+        <tr><td>치명타</td><td id="sidebarCrit">0</td></tr>
+        <tr><td>공격속도</td><td id="sidebarSpd">0</td></tr>
+        <tr><td>DPS(기본)</td><td id="sidebarDpsBase">0</td></tr>
+        <tr><td>DPS(치명타 적용)</td><td id="sidebarDpsCrit">0</td></tr>
+      </table>
+    </div>
+  </div>
 
   <h2>Result: 2 × 8 Table (Column Sums)</h2>
   <table id="resultTable">
@@ -263,34 +288,98 @@
   </table>
 
   <script>
-    function updateSums() {
-      // Gather all tables
+    // Helper to get all table rows and their input values
+    function getAllRows() {
       const tableIds = ['table1','table2','table3','table4','table5','table6'];
-      let colSums = Array(8).fill(0);
-      let colSums2 = Array(8).fill(0);
-      let allRows = [];
-      // Collect all rows from all tables
+      let rows = [];
       tableIds.forEach(id => {
-        const rows = document.querySelectorAll(`#${id} tbody tr`);
-        allRows = allRows.concat(Array.from(rows));
-      });
-      // Sum columns for all rows (first row for sumRow0, second for sumRow1)
-      allRows.forEach((row, idx) => {
-        row.querySelectorAll('input[type="number"]').forEach((input, colIdx) => {
-          const val = parseFloat(input.value) || 0;
-          if (idx % 2 === 0) {
-            colSums[colIdx] += val;
-          } else {
-            colSums2[colIdx] += val;
-          }
+        document.querySelectorAll(`#${id} tbody tr`).forEach(tr => {
+          rows.push(tr);
         });
       });
-      // Update result table
-      for (let j = 0; j < 8; j++) {
-        document.getElementById('sumRow0col'+j).innerText = colSums[j];
-        document.getElementById('sumRow1col'+j).innerText = colSums2[j];
+      return rows;
+    }
+
+    // Helper to get all input values as a 2D array
+    function getAllValues() {
+      return getAllRows().map(tr => Array.from(tr.querySelectorAll('input[type="number"]')).map(input => parseFloat(input.value) || 0));
+    }
+
+    // Helper to get sum of a column
+    function sumCol(values, colIdx) {
+      return values.reduce((acc, row) => acc + (row[colIdx] || 0), 0);
+    }
+
+    // Main calculation function
+    function updateSums() {
+      const values = getAllValues();
+      // Get sidebar input values
+      const accountLevel = parseFloat(document.getElementById('accountLevel').value) || 0;
+      const towerLevel = parseFloat(document.getElementById('towerLevel').value) || 1;
+      const towerAtk = parseFloat(document.getElementById('towerAtk').value) || 0;
+      const towerSpd = parseFloat(document.getElementById('towerSpd').value) || 0;
+
+      // Column indices
+      const ATK_FLAT = 0, ATK_PCT = 1, ATK_MULTI = 2, SPD_FLAT = 3, SPD_PCT = 4, SPD_MULTI = 5, CRIT_DMG = 6, CRIT_MULTI = 7;
+
+      // Sums for each stat
+      const sumAtkFlat = sumCol(values, ATK_FLAT);
+      const sumAtkPct = sumCol(values, ATK_PCT);
+      const sumAtkMulti = sumCol(values, ATK_MULTI);
+      const sumSpdFlat = sumCol(values, SPD_FLAT);
+      const sumSpdPct = sumCol(values, SPD_PCT);
+      const sumSpdMulti = sumCol(values, SPD_MULTI);
+      const sumCritDmg = sumCol(values, CRIT_DMG);
+      // const sumCritMulti = sumCol(values, CRIT_MULTI); // Not used in formula
+
+      // DPS formulas
+      function calcDps(withoutRowIdx = null, ignoreCrit = false) {
+        let v = values.map(row => row.slice());
+        if (withoutRowIdx !== null) v[withoutRowIdx] = v[withoutRowIdx].map(() => 0);
+        const atkFlat = v.reduce((acc, row) => acc + (row[ATK_FLAT] || 0), 0);
+        const atkMulti = v.reduce((acc, row) => acc + (row[ATK_MULTI] || 0), 0);
+        const atkPct = v.reduce((acc, row) => acc + (row[ATK_PCT] || 0), 0);
+        const spdFlat = v.reduce((acc, row) => acc + (row[SPD_FLAT] || 0), 0);
+        const spdPct = v.reduce((acc, row) => acc + (row[SPD_PCT] || 0), 0);
+        const spdMulti = v.reduce((acc, row) => acc + (row[SPD_MULTI] || 0), 0);
+        const critDmg = v.reduce((acc, row) => acc + (row[CRIT_DMG] || 0), 0);
+        // const critMulti = v.reduce((acc, row) => acc + (row[CRIT_MULTI] || 0), 0);
+
+        let dps = (towerAtk + atkFlat)
+          * (1 + atkMulti + accountLevel/100)
+          * (1 + atkPct + 0.5*(towerLevel-1))
+          * (towerSpd + spdFlat)
+          * (1 + spdPct/100)
+          * (1 + spdMulti);
+        if (!ignoreCrit) {
+          dps *= (1.5 + critDmg);
+        }
+        return dps;
+      }
+
+      // Calculate total DPS
+      const dpsCrit = calcDps();
+      const dpsBase = calcDps(null, true);
+
+      // Update sidebar
+      document.getElementById('sidebarAtk').innerText = (towerAtk + sumAtkFlat).toLocaleString();
+      document.getElementById('sidebarCrit').innerText = (1.5 + sumCritDmg).toLocaleString();
+      document.getElementById('sidebarSpd').innerText = (towerSpd + sumSpdFlat).toLocaleString();
+      document.getElementById('sidebarDpsBase').innerText = Math.round(dpsBase).toLocaleString();
+      document.getElementById('sidebarDpsCrit').innerText = Math.round(dpsCrit).toLocaleString();
+
+      // Calculate and update contribution for each row
+      const rows = getAllRows();
+      for (let i = 0; i < rows.length; i++) {
+        const contribCell = rows[i].querySelector('.contrib');
+        if (!contribCell) continue;
+        const dpsWithout = calcDps(i);
+        let contrib = dpsCrit === 0 ? 0 : ((dpsCrit - dpsWithout) / dpsCrit * 100);
+        contribCell.innerText = contrib.toFixed(2) + '%';
       }
     }
+    // Initial call
+    updateSums();
   </script>
 </body>
 </html>
