@@ -31,95 +31,322 @@
   </style>
 </head>
 <body>
-  <div style="display: flex; align-items: flex-start;">
-    <div style="flex: 1;">
-      <table style="width:100%; margin: 32px 0;">
-        <thead>
-          <tr>
-            <th rowspan="2">아이템</th>
-            <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
-          </tr>
-          <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>A</th>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>B</th>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>C</th>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>D</th>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>E</th>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td><input type="number"></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div style="width: 260px; margin-left: 24px;">
-      <table style="width: 100%; margin-bottom: 16px;">
-        <tr><th colspan="2">기타</th></tr>
-        <tr><td>계정 레벨</td><td><input id="accountLevel" type="number" value="188" style="width: 80px;" oninput="updateSums()"></td></tr>
-        <tr><td>타워 레벨</td><td><input id="towerLevel" type="number" value="11" style="width: 80px;" oninput="updateSums()"></td></tr>
-        <tr><td>타워 공격력</td><td><input id="towerAtk" type="number" value="24" style="width: 80px;" oninput="updateSums()"></td></tr>
-        <tr><td>타워 공격속도</td><td><input id="towerSpd" type="number" value="0.4" style="width: 80px;" oninput="updateSums()"></td></tr>
-      </table>
-      <table style="width: 100%;">
-        <tr><th colspan="2">스테이지 시작 값</th></tr>
-        <tr><td>공격력</td><td id="sidebarAtk">0</td></tr>
-        <tr><td>치명타</td><td id="sidebarCrit">0</td></tr>
-        <tr><td>공격속도</td><td id="sidebarSpd">0</td></tr>
-        <tr><td>DPS(기본)</td><td id="sidebarDpsBase">0</td></tr>
-        <tr><td>DPS(치명타 적용)</td><td id="sidebarDpsCrit">0</td></tr>
-      </table>
-    </div>
+  <div style="display: flex; flex-direction: column; gap: 32px;">
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #1</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>C</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>D</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>E</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #2</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #3</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #4</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #5</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>C</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>D</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dps-table" style="width:100%;">
+      <caption>Item #6</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">아이템</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+          <th rowspan="2">DPS 증가량<br>(기본)</th>
+          <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>C</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>D</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+        <tr>
+          <th>E</th>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td><input type="number"></td>
+          <td class="dps-base"></td>
+          <td class="dps-crit"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <h2>Result: 2 × 8 Table (Column Sums)</h2>
@@ -249,6 +476,29 @@
     }
     // Initial call
     updateSums();
+
+    function calcDPS(rowInputs) {
+      // Example calculation: sum all input values for the row
+      let vals = Array.from(rowInputs).map(input => parseFloat(input.value) || 0);
+      // Replace this with your actual DPS formula
+      let dpsBase = vals.reduce((a, b) => a + b, 0);
+      let dpsCrit = dpsBase * 1.5;
+      return [dpsBase, dpsCrit];
+    }
+    function updateAllDPS() {
+      document.querySelectorAll('.dps-table').forEach(table => {
+        table.querySelectorAll('tbody tr').forEach(row => {
+          let inputs = row.querySelectorAll('input[type="number"]');
+          let [dpsBase, dpsCrit] = calcDPS(inputs);
+          row.querySelector('.dps-base').textContent = dpsBase ? dpsBase.toFixed(2) : '';
+          row.querySelector('.dps-crit').textContent = dpsCrit ? dpsCrit.toFixed(2) : '';
+        });
+      });
+    }
+    document.addEventListener('input', function(e) {
+      if (e.target.matches('input[type="number"]')) updateAllDPS();
+    });
+    window.addEventListener('DOMContentLoaded', updateAllDPS);
   </script>
 </body>
 </html>
