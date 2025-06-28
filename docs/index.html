@@ -4,16 +4,9 @@
   <meta charset="UTF-8">
   <title>7x5 Interactive Table with Row Sums</title>
   <style>
-    table, th, td {
-      border: 1px solid #ccc;
-      border-collapse: collapse;
-      padding: 8px;
-    }
-    th, td {
-      text-align: center;
-      vertical-align: middle;
-    }
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
     input[type="number"] { width: 60px; }
+    th, td { text-align: center; }
     /* Remove number input spinners (all browsers) */
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -33,17 +26,20 @@
         <caption>Item #1</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
@@ -64,17 +60,20 @@
         <caption>Item #2</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
@@ -95,17 +94,20 @@
         <caption>Item #3</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
@@ -135,17 +137,20 @@
         <caption>Item #4</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
@@ -166,17 +171,20 @@
         <caption>Item #5</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
@@ -197,17 +205,20 @@
         <caption>Item #6</caption>
         <thead>
           <tr>
-            <th rowspan="2">아이템</th>
+            <th rowspan="2"></th>
             <th colspan="3">공격력</th>
-            <th rowspan="2">공격속도</th>
-            <th rowspan="2">치명타 피해</th>
-            <th rowspan="2">DPS 증가량<br>(기본)</th>
-            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            <th colspan="2">공격속도</th>
+            <th colspan="1">치명타 피해</th>
+            <th rowspan="2">DPS 기여도 (기본)</th>
+            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
+            <th>수치 증가</th>
+            <th>퍼센트 증가</th>
+            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
