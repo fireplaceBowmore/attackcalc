@@ -317,14 +317,6 @@
       </tbody>
     </table>
 
-    <table style="width:100%; margin-top:32px;">
-      <tbody>
-        <tr id="sum-row">
-          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        </tr>
-      </tbody>
-    </table>
-
     <table style="width:auto; margin-top:32px; min-width:700px;">
       <thead>
         <tr>
@@ -456,28 +448,12 @@
       return [dpsBase, dpsCrit];
     }
     function updateAllDPS() {
-      // Update row DPS
-      document.querySelectorAll('.dps-table').forEach(table => {
-        table.querySelectorAll('tbody tr').forEach(row => {
-          let inputs = row.querySelectorAll('input[type="number"]');
-          let [dpsBase, dpsCrit] = calcDPS(inputs);
-          row.querySelector('.dps-base').textContent = dpsBase ? dpsBase.toFixed(2) : '';
-          row.querySelector('.dps-crit').textContent = dpsCrit ? dpsCrit.toFixed(2) : '';
-        });
-      });
       // Update stat column sums (공격력, 공격속도, 치명타 피해)
       let statColCount = 6; // 3+1+1+1 (공격력 3, 공격속도 1, 치명타 피해 1)
       let sums = Array(statColCount).fill(0);
-      document.querySelectorAll('.dps-table').forEach(table => {
-        table.querySelectorAll('tbody tr').forEach(row => {
-          let tds = row.querySelectorAll('td');
-          for (let i = 0; i < statColCount; ++i) {
-            let val = 0;
-            let input = tds[i]?.querySelector('input');
-            if (input) val = parseFloat(input.value) || 0;
-            sums[i] += val;
-          }
-        });
+      document.querySelectorAll('input[type="number"]').forEach((input, idx) => {
+        let col = idx % statColCount;
+        sums[col] += parseFloat(input.value) || 0;
       });
       let sumRow = document.getElementById('stat-sum-row');
       if (sumRow) {
