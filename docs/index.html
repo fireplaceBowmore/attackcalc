@@ -14,18 +14,18 @@
       vertical-align: middle;
       font-weight: normal;
     }
-    th {
-      font-weight: bold;
+    /* Remove bold from main table headers */
+    .dps-table th, .dps-table td {
+      font-weight: normal;
     }
     .info-table th {
       background: #e6e1f2;
       font-weight: bold;
       text-align: center;
     }
-    .info-table {
-      margin-bottom: 16px;
-      float: right;
-      min-width: 220px;
+    .info-table, .sum-table {
+      min-width: 384px;
+      width: 432px;
     }
     .info-table td {
       text-align: right;
@@ -44,11 +44,17 @@
       -moz-appearance: textfield; /* Firefox */
       appearance: textfield; /* Standard */
     }
+    .dps-table thead th {
+      background: #e6e1f2;
+      font-weight: bold;
+    }
+    .info-table, .sum-table { width: 100% !important; }
+    .info-table td, .info-table th, .sum-table td, .sum-table th { padding: 12px 16px; }
   </style>
 </head>
 <body>
   <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
-    <div style="flex: 1;">
+    <div style="flex: 1; min-width: 600px;">
       <div style="display: flex; flex-direction: column; gap: 32px;">
         <table class="dps-table" style="width:100%;">
           <caption></caption>
@@ -56,8 +62,8 @@
             <tr>
               <th rowspan="2">아이템</th>
               <th colspan="3">공격력</th>
-              <th rowspan="2">공격속도</th>
-              <th rowspan="2">치명타 피해</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
               <th rowspan="2">DPS 증가량<br>(기본)</th>
               <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
             </tr>
@@ -69,7 +75,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>A</th>
+              <th>투구</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -79,7 +85,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>B</th>
+              <th>주 무기</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -89,7 +95,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>C</th>
+              <th>보조 무기</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -99,7 +105,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>D</th>
+              <th>기타</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -109,7 +115,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>E</th>
+              <th>반지</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -125,10 +131,10 @@
           <caption></caption>
           <thead>
             <tr>
-              <th rowspan="2">아이템</th>
+              <th rowspan="2">펫</th>
               <th colspan="3">공격력</th>
-              <th rowspan="2">공격속도</th>
-              <th rowspan="2">치명타 피해</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
               <th rowspan="2">DPS 증가량<br>(기본)</th>
               <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
             </tr>
@@ -140,7 +146,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>A</th>
+              <th>1슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -150,7 +156,17 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>B</th>
+              <th>2슬롯</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>3슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -166,10 +182,10 @@
           <caption></caption>
           <thead>
             <tr>
-              <th rowspan="2">아이템</th>
+              <th rowspan="2">성장</th>
               <th colspan="3">공격력</th>
-              <th rowspan="2">공격속도</th>
-              <th rowspan="2">치명타 피해</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
               <th rowspan="2">DPS 증가량<br>(기본)</th>
               <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
             </tr>
@@ -181,7 +197,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>A</th>
+              <th>성장(중앙)</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -191,7 +207,17 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>B</th>
+              <th>성장(외곽)</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>영구 성장</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -207,10 +233,10 @@
           <caption></caption>
           <thead>
             <tr>
-              <th rowspan="2">아이템</th>
+              <th rowspan="2">지원 용병</th>
               <th colspan="3">공격력</th>
-              <th rowspan="2">공격속도</th>
-              <th rowspan="2">치명타 피해</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
               <th rowspan="2">DPS 증가량<br>(기본)</th>
               <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
             </tr>
@@ -222,7 +248,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>A</th>
+              <th>글로벌 버프</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -232,27 +258,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>B</th>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td class="dps-base"></td>
-              <td class="dps-crit"></td>
-            </tr>
-            <tr>
-              <th>C</th>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td><input type="number"></td>
-              <td class="dps-base"></td>
-              <td class="dps-crit"></td>
-            </tr>
-            <tr>
-              <th>D</th>
+              <th>영웅 선택 버프</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -268,10 +274,10 @@
           <caption></caption>
           <thead>
             <tr>
-              <th rowspan="2">아이템</th>
+              <th rowspan="2">유물</th>
               <th colspan="3">공격력</th>
-              <th rowspan="2">공격속도</th>
-              <th rowspan="2">치명타 피해</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
               <th rowspan="2">DPS 증가량<br>(기본)</th>
               <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
             </tr>
@@ -283,7 +289,7 @@
           </thead>
           <tbody>
             <tr>
-              <th>A</th>
+              <th>1슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -293,7 +299,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>B</th>
+              <th>2슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -303,7 +309,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>C</th>
+              <th>3슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -313,7 +319,7 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>D</th>
+              <th>4슬롯</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -323,7 +329,88 @@
               <td class="dps-crit"></td>
             </tr>
             <tr>
-              <th>E</th>
+              <th>세트 효과</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="dps-table" style="width:100%;">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th rowspan="2">구조물⋅소품</th>
+              <th colspan="3">공격력</th>
+              <th rowspan="2">공격속도(%)</th>
+              <th rowspan="2">치명타 피해(%)</th>
+              <th rowspan="2">DPS 증가량<br>(기본)</th>
+              <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
+            </tr>
+            <tr>
+              <th>수치 증가</th>
+              <th>퍼센트 증가</th>
+              <th>배수 증가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1구조물</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>2구조물</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>1소품</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>2소품</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>3소품</th>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td><input type="number"></td>
+              <td class="dps-base"></td>
+              <td class="dps-crit"></td>
+            </tr>
+            <tr>
+              <th>4소품</th>
               <td><input type="number"></td>
               <td><input type="number"></td>
               <td><input type="number"></td>
@@ -336,15 +423,22 @@
         </table>
       </div>
     </div>
-    <div style="min-width: 240px; margin-left: 32px;">
-      <table class="sum-table info-table" style="width:100%;">
+    <div style="min-width: 360px; margin-left: 24px; display: flex; flex-direction: column; gap: 8px;">
+      <table class="info-table" style="width:100%">
+        <tr><th colspan="2">기타</th></tr>
+        <tr><td>계정 레벨</td><td><input id="accountLevel" type="number" value="188" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
+        <tr><td>타워 레벨</td><td><input id="towerLevel" type="number" value="11" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
+        <tr><td>타워 공격력</td><td><input id="towerAtk" type="number" value="24" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
+        <tr><td>타워 공격속도</td><td><input id="towerSpd" type="number" value="0.4" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
+      </table>
+      <table class="sum-table info-table" style="width:100%">
         <tr><th colspan="5">합계</th></tr>
         <tr>
-          <td>공격력<br>수치 증가</td>
-          <td>공격력<br>퍼센트 증가</td>
-          <td>공격력<br>배수 증가</td>
-          <td>공격속도</td>
-          <td>치명타 피해</td>
+          <td>공격력 수치<br>증가</td>
+          <td>공격력 퍼센트<br>증가(%)</td>
+          <td>공격력 배수<br>증가</td>
+          <td>공격속도<br>증가(%)</td>
+          <td>치명타 피해<br>증가(%)</td>
         </tr>
         <tr>
           <td id="sum-atk-flat">0</td>
@@ -354,14 +448,7 @@
           <td id="sum-crit-dmg">0</td>
         </tr>
       </table>
-      <table class="info-table" style="width:100%;">
-        <tr><th colspan="2">기타</th></tr>
-        <tr><td>계정 레벨</td><td><input id="accountLevel" type="number" value="188" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
-        <tr><td>타워 레벨</td><td><input id="towerLevel" type="number" value="11" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
-        <tr><td>타워 공격력</td><td><input id="towerAtk" type="number" value="24" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
-        <tr><td>타워 공격속도</td><td><input id="towerSpd" type="number" value="0.4" style="width: 80px;" oninput="updateAllDPS()"></td></tr>
-      </table>
-      <table class="info-table" style="width:100%;">
+      <table class="info-table" style="width:100%">
         <tr><th colspan="2">스테이지 시작 값</th></tr>
         <tr><td>공격력</td><td id="sidebarAtk">0</td></tr>
         <tr><td>치명타</td><td id="sidebarCrit">0</td></tr>
@@ -373,121 +460,30 @@
   </div>
 
   <script>
-    // Helper to get all table rows and their input values
-    function getAllRows() {
-      const tableIds = ['table1','table2','table3','table4','table5','table6'];
-      let rows = [];
-      tableIds.forEach(id => {
-        document.querySelectorAll(`#${id} tbody tr`).forEach(tr => {
-          rows.push(tr);
+    function updateAllDPS() {
+      let statColCount = 6;
+      let sums = Array(statColCount).fill(0);
+      let allRows = [];
+      document.querySelectorAll('.dps-table').forEach(table => {
+        table.querySelectorAll('tbody tr').forEach(row => {
+          let tds = row.querySelectorAll('td');
+          let rowStats = [];
+          for (let i = 0; i < statColCount; ++i) {
+            let input;
+            if (i < statColCount - 1) {
+              input = tds[i]?.querySelector('input');
+            } else {
+              let inputs = row.querySelectorAll('input');
+              input = inputs[inputs.length - 1];
+            }
+            let val = input ? parseFloat(input.value) || 0 : 0;
+            sums[i] += val;
+            rowStats.push(val);
+          }
+          allRows.push({row, rowStats});
         });
       });
-      return rows;
-    }
 
-    // Helper to get all input values as a 2D array
-    function getAllValues() {
-      return getAllRows().map(tr => Array.from(tr.querySelectorAll('input[type="number"]')).map(input => parseFloat(input.value) || 0));
-    }
-
-    // Helper to get sum of a column
-    function sumCol(values, colIdx) {
-      return values.reduce((acc, row) => acc + (row[colIdx] || 0), 0);
-    }
-
-    // Main calculation function
-    function updateSums() {
-      const values = getAllValues();
-      // Get sidebar input values
-      const accountLevel = parseFloat(document.getElementById('accountLevel').value) || 0;
-      const towerLevel = parseFloat(document.getElementById('towerLevel').value) || 1;
-      const towerAtk = parseFloat(document.getElementById('towerAtk').value) || 0;
-      const towerSpd = parseFloat(document.getElementById('towerSpd').value) || 0;
-
-      // Column indices
-      const ATK_FLAT = 0, ATK_PCT = 1, ATK_MULTI = 2, SPD_FLAT = 3, SPD_PCT = 4, CRIT_DMG = 5;
-
-      // Sums for each stat
-      const sumAtkFlat = sumCol(values, ATK_FLAT);
-      const sumAtkPct = sumCol(values, ATK_PCT);
-      const sumAtkMulti = sumCol(values, ATK_MULTI);
-      const sumSpdFlat = sumCol(values, SPD_FLAT);
-      const sumSpdPct = sumCol(values, SPD_PCT);
-      const sumCritDmg = sumCol(values, CRIT_DMG);
-
-      // Update sidebar values
-      // 공격력: (타워 공격력 + sumAtkFlat/100) * (1 + sumAtkMulti + accountLevel/100) * (1 + sumAtkPct + 0.5*(towerLevel-1))
-      const sidebarAtk = (towerAtk + sumAtkFlat/100) * (1 + sumAtkMulti + accountLevel/100) * (1 + sumAtkPct + 0.5*(towerLevel-1));
-      // 치명타: sumCritDmg
-      const sidebarCrit = sumCritDmg;
-      // 공격속도: (타워 공격속도 + sumSpdFlat) * (1 + sumSpdPct/100)
-      const sidebarSpd = (towerSpd + sumSpdFlat) * (1 + sumSpdPct/100);
-
-      // DPS formulas
-      function calcDps(withoutRowIdx = null, ignoreCrit = false) {
-        let v = values.map(row => row.slice());
-        if (withoutRowIdx !== null) v[withoutRowIdx] = v[withoutRowIdx].map(() => 0);
-        const atkFlat = v.reduce((acc, row) => acc + (row[ATK_FLAT] || 0), 0);
-        const atkMulti = v.reduce((acc, row) => acc + (row[ATK_MULTI] || 0), 0);
-        const atkPct = v.reduce((acc, row) => acc + (row[ATK_PCT] || 0), 0);
-        const spdFlat = v.reduce((acc, row) => acc + (row[SPD_FLAT] || 0), 0);
-        const spdPct = v.reduce((acc, row) => acc + (row[SPD_PCT] || 0), 0);
-        const critDmg = v.reduce((acc, row) => acc + (row[CRIT_DMG] || 0), 0);
-
-        let dps = (towerAtk + atkFlat/100)
-          * (1 + atkMulti + accountLevel/100)
-          * (1 + atkPct + 0.5*(towerLevel-1))
-          * (towerSpd + spdFlat)
-          * (1 + spdPct/100);
-        if (!ignoreCrit) {
-          dps *= (1.5 + critDmg);
-        }
-        return dps;
-      }
-
-      // Calculate total DPS
-      const dpsCrit = calcDps();
-      const dpsBase = calcDps(null, true);
-
-      // Update sidebar
-      document.getElementById('sidebarAtk').innerText = Math.round(sidebarAtk).toLocaleString();
-      document.getElementById('sidebarCrit').innerText = sidebarCrit.toLocaleString();
-      document.getElementById('sidebarSpd').innerText = sidebarSpd.toLocaleString();
-      document.getElementById('sidebarDpsBase').innerText = Math.round(dpsBase).toLocaleString();
-      document.getElementById('sidebarDpsCrit').innerText = Math.round(dpsCrit).toLocaleString();
-
-      // Calculate and update contribution for each row
-      const rows = getAllRows();
-      for (let i = 0; i < rows.length; i++) {
-        const contribBaseCell = rows[i].querySelector('.contrib-base');
-        const contribCritCell = rows[i].querySelector('.contrib-crit');
-        if (!contribBaseCell || !contribCritCell) continue;
-        const dpsWithoutCrit = calcDps(i, false);
-        const dpsWithoutBase = calcDps(i, true);
-        let contribCrit = dpsCrit === 0 ? 0 : ((dpsCrit - dpsWithoutCrit) / dpsCrit * 100);
-        let contribBase = dpsBase === 0 ? 0 : ((dpsBase - dpsWithoutBase) / dpsBase * 100);
-        contribBaseCell.innerText = contribBase.toFixed(2) + '%';
-        contribCritCell.innerText = contribCrit.toFixed(2) + '%';
-      }
-    }
-    // Initial call
-    updateSums();
-
-    function calcDPS(rowInputs) {
-      let vals = Array.from(rowInputs).map(input => parseFloat(input.value) || 0);
-      let dpsBase = vals.reduce((a, b) => a + b, 0);
-      let dpsCrit = dpsBase * 1.5;
-      return [dpsBase, dpsCrit];
-    }
-    function updateAllDPS() {
-      // Sum stat columns from the main data table
-      let statColCount = 6; // 3+1+1+1 (공격력 3, 공격속도 1, 치명타 피해 1)
-      let sums = Array(statColCount).fill(0);
-      // Find all input fields in the main data table
-      document.querySelectorAll('tbody input[type="number"]').forEach((input, idx) => {
-        let col = idx % statColCount;
-        sums[col] += parseFloat(input.value) || 0;
-      });
       // Update sum table
       document.getElementById('sum-atk-flat').textContent = sums[0] ? sums[0].toLocaleString() : '0';
       document.getElementById('sum-atk-pct').textContent = sums[1] ? sums[1].toLocaleString() : '0';
@@ -495,32 +491,52 @@
       document.getElementById('sum-spd-flat').textContent = sums[3] ? sums[3].toLocaleString() : '0';
       document.getElementById('sum-crit-dmg').textContent = sums[5] ? sums[5].toLocaleString() : '0';
 
-      // Update info tables
       const accountLevel = parseFloat(document.getElementById('accountLevel').value) || 0;
       const towerLevel = parseFloat(document.getElementById('towerLevel').value) || 1;
       const towerAtk = parseFloat(document.getElementById('towerAtk').value) || 0;
       const towerSpd = parseFloat(document.getElementById('towerSpd').value) || 0;
+
+      // Calculate total DPS with all rows
       const sumAtkFlat = sums[0];
       const sumAtkPct = sums[1];
       const sumAtkMulti = sums[2];
       const sumSpdFlat = sums[3];
       const sumCritDmg = sums[5];
 
-      // 공격력: (타워 공격력 + sumAtkFlat) * (1 + sumAtkMulti + accountLevel/100) * (1 + sumAtkPct + 0.5*(towerLevel-1))
-      const sidebarAtk = (towerAtk + sumAtkFlat) * (1 + sumAtkMulti + accountLevel/100) * (1 + sumAtkPct + 0.5*(towerLevel-1));
-      // 치명타: sumCritDmg
-      const sidebarCrit = sumCritDmg;
-      // 공격속도: (타워 공격속도 + sumSpdFlat)
-      const sidebarSpd = (towerSpd + sumSpdFlat);
-      // DPS formulas
-      const dpsBase = sidebarAtk * sidebarSpd;
-      const dpsCrit = dpsBase * (1.5 + sidebarCrit);
+      // Main DPS calculation (with all rows)
+      const atk = (towerAtk + sumAtkFlat) * (1 + sumAtkMulti + accountLevel/100) * (1 + sumAtkPct/100 + 0.5*(towerLevel-1));
+      const spd = towerSpd * (1 + sumSpdFlat / 100);
+      const dpsBase = atk * spd;
+      const dpsCrit = dpsBase * (1.5 + sumCritDmg / 100);
 
-      document.getElementById('sidebarAtk').textContent = Math.round(sidebarAtk).toLocaleString();
-      document.getElementById('sidebarCrit').textContent = sidebarCrit ? (sidebarCrit*100).toLocaleString()+'%' : '0%';
-      document.getElementById('sidebarSpd').textContent = sidebarSpd.toLocaleString();
+      document.getElementById('sidebarAtk').textContent = Math.round(atk).toLocaleString();
+      document.getElementById('sidebarCrit').textContent = sumCritDmg ? (sumCritDmg + 150).toLocaleString()+'%' : '0%';
+      document.getElementById('sidebarSpd').textContent = spd.toLocaleString();
       document.getElementById('sidebarDpsBase').textContent = Math.round(dpsBase).toLocaleString();
       document.getElementById('sidebarDpsCrit').textContent = Math.round(dpsCrit).toLocaleString();
+
+      // Per-row DPS 증가량 계산 (percentage only)
+      allRows.forEach(({row, rowStats}, idx) => {
+        // Remove this row's values from sums
+        const flat = sumAtkFlat - rowStats[0];
+        const pct = sumAtkPct - rowStats[1];
+        const multi = sumAtkMulti - rowStats[2];
+        const spdFlat = sumSpdFlat - rowStats[3];
+        const crit = sumCritDmg - rowStats[5];
+        // DPS without this row
+        const atk_ = (towerAtk + flat) * (1 + multi + accountLevel/100) * (1 + pct/100 + 0.5*(towerLevel-1));
+        const spd_ = towerSpd * (1 + spdFlat / 100);
+        const dpsBase_ = atk_ * spd_;
+        const dpsCrit_ = dpsBase_ * (1.5 + crit / 100);
+        // Percentage increase
+        let dpsBasePct = dpsBase_ === 0 ? 0 : ((dpsBase - dpsBase_) / dpsBase_ * 100);
+        let dpsCritPct = dpsCrit_ === 0 ? 0 : ((dpsCrit - dpsCrit_) / dpsCrit_ * 100);
+        let tds = row.querySelectorAll('td');
+        let dpsBaseCell = tds[tds.length - 2];
+        let dpsCritCell = tds[tds.length - 1];
+        dpsBaseCell.innerHTML = dpsBase_ === 0 ? '' : `<span style='font-size:0.9em;'>${dpsBasePct.toFixed(2)}%</span>`;
+        dpsCritCell.innerHTML = dpsCrit_ === 0 ? '' : `<span style='font-size:0.9em;'>${dpsCritPct.toFixed(2)}%</span>`;
+      });
     }
     document.addEventListener('input', function(e) {
       if (e.target.matches('input[type="number"]')) updateAllDPS();
