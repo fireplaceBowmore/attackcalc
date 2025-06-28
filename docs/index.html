@@ -542,6 +542,23 @@
       if (e.target.matches('input[type="number"]')) updateAllDPS();
     });
     window.addEventListener('DOMContentLoaded', updateAllDPS);
+
+    // Save all inputs on change
+    document.addEventListener('input', function() {
+      const allInputs = Array.from(document.querySelectorAll('input[type=\"number\"]'));
+      const values = allInputs.map(input => input.value);
+      localStorage.setItem('statInputs', JSON.stringify(values));
+    });
+
+    // Load all inputs on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const values = JSON.parse(localStorage.getItem('statInputs') || '[]');
+      const allInputs = Array.from(document.querySelectorAll('input[type=\"number\"]'));
+      allInputs.forEach((input, i) => {
+        if (values[i] !== undefined) input.value = values[i];
+      });
+      updateAllDPS(); // recalculate after loading
+    });
   </script>
 </body>
 </html>
