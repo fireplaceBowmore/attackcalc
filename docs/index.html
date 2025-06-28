@@ -324,6 +324,28 @@
         </tr>
       </tbody>
     </table>
+
+    <table style="width:auto; margin-top:32px; min-width:700px;">
+      <thead>
+        <tr>
+          <th rowspan="2">계</th>
+          <th colspan="3">공격력</th>
+          <th rowspan="2">공격속도</th>
+          <th rowspan="2">치명타 피해</th>
+        </tr>
+        <tr>
+          <th>수치 증가</th>
+          <th>퍼센트 증가</th>
+          <th>배수 증가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="stat-sum-row">
+          <td style="font-weight:bold;">계</td>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
@@ -443,29 +465,24 @@
           row.querySelector('.dps-crit').textContent = dpsCrit ? dpsCrit.toFixed(2) : '';
         });
       });
-      // Update column sums
-      let colCount = 8; // 3+1+1+1+2 (공격력 3, 공격속도 1, 치명타 피해 1, DPS 2)
-      let sums = Array(colCount).fill(0);
+      // Update stat column sums (공격력, 공격속도, 치명타 피해)
+      let statColCount = 6; // 3+1+1+1 (공격력 3, 공격속도 1, 치명타 피해 1)
+      let sums = Array(statColCount).fill(0);
       document.querySelectorAll('.dps-table').forEach(table => {
         table.querySelectorAll('tbody tr').forEach(row => {
           let tds = row.querySelectorAll('td');
-          for (let i = 0; i < colCount; ++i) {
+          for (let i = 0; i < statColCount; ++i) {
             let val = 0;
-            if (i < 6) {
-              let input = tds[i]?.querySelector('input');
-              if (input) val = parseFloat(input.value) || 0;
-            } else {
-              // DPS columns
-              val = parseFloat(tds[i]?.textContent) || 0;
-            }
+            let input = tds[i]?.querySelector('input');
+            if (input) val = parseFloat(input.value) || 0;
             sums[i] += val;
           }
         });
       });
-      let sumRow = document.getElementById('sum-row');
+      let sumRow = document.getElementById('stat-sum-row');
       if (sumRow) {
-        for (let i = 0; i < colCount; ++i) {
-          sumRow.children[i].textContent = sums[i] ? sums[i].toFixed(2) : '';
+        for (let i = 0; i < statColCount; ++i) {
+          sumRow.children[i+1].textContent = sums[i] ? sums[i].toLocaleString() : '';
         }
       }
     }
