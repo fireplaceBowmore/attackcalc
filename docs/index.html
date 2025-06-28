@@ -4,9 +4,20 @@
   <meta charset="UTF-8">
   <title>7x5 Interactive Table with Row Sums</title>
   <style>
-    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    th, td {
+      text-align: center;
+      vertical-align: middle;
+      font-weight: normal;
+    }
+    th {
+      font-weight: bold;
+    }
     input[type="number"] { width: 60px; }
-    th, td { text-align: center; }
     /* Remove number input spinners (all browsers) */
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -22,216 +33,73 @@
 <body>
   <div style="display: flex; align-items: flex-start;">
     <div style="flex: 1;">
-      <table id="table1">
-        <caption>Item #1</caption>
+      <table style="width:100%; margin: 32px 0;">
         <thead>
           <tr>
-            <th rowspan="2"></th>
+            <th rowspan="2">아이템</th>
             <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
+            <th rowspan="2">공격속도</th>
+            <th rowspan="2">치명타 피해</th>
+            <th rowspan="2">DPS 증가량<br>(기본)</th>
+            <th rowspan="2">DPS 증가량<br>(치명타 적용)</th>
           </tr>
           <tr>
             <th>수치 증가</th>
             <th>퍼센트 증가</th>
             <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
           </tr>
         </thead>
         <tbody>
-          <script>
-            let rowNames1 = ['A','B','C','D'];
-            for(let i=0;i<4;i++){
-              document.write('<tr><th>'+rowNames1[i]+'</th>');
-              for(let j=0;j<6;j++){
-                document.write('<td><input type="number" oninput="updateSums()" /></td>');
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
-        </tbody>
-      </table>
-
-      <table id="table2">
-        <caption>Item #2</caption>
-        <thead>
           <tr>
-            <th rowspan="2"></th>
-            <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
+            <th>A</th>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <script>
-            let rowNames2 = ['A','B'];
-            for(let i=0;i<2;i++){
-              document.write('<tr><th>'+rowNames2[i]+'</th>');
-              for(let j=0;j<6;j++){
-                document.write('<td><input type="number" oninput="updateSums()" /></td>');
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
-        </tbody>
-      </table>
-
-      <table id="table3">
-        <caption>Item #3</caption>
-        <thead>
-          <tr>
-            <th rowspan="2"></th>
-            <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
+            <th>B</th>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <script>
-            let rowNames3 = ['A','B'];
-            for(let i=0;i<2;i++){
-              document.write('<tr>');
-              if(i===0){
-                document.write('<th>'+rowNames3[i]+'</th>');
-              } else {
-                document.write('<th><input type="text" value="'+rowNames3[i]+'" readonly style="background:#eee;border:none;width:40px;text-align:center;"></th>');
-              }
-              for(let j=0;j<6;j++){
-                if(j==0 && i!==0){
-                  document.write('<td><input type="number" disabled style="background:#eee;" /></td>');
-                } else {
-                  document.write('<td><input type="number" oninput="updateSums()" /></td>');
-                }
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
-        </tbody>
-      </table>
-
-      <table id="table4">
-        <caption>Item #4</caption>
-        <thead>
-          <tr>
-            <th rowspan="2"></th>
-            <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
+            <th>C</th>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <script>
-            let rowNames4 = ['A'];
-            for(let i=0;i<1;i++){
-              document.write('<tr><th>'+rowNames4[i]+'</th>');
-              for(let j=0;j<6;j++){
-                document.write('<td><input type="number" oninput="updateSums()" /></td>');
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
-        </tbody>
-      </table>
-
-      <table id="table5">
-        <caption>Item #5</caption>
-        <thead>
-          <tr>
-            <th rowspan="2"></th>
-            <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
+            <th>D</th>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
+            <th>E</th>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
           </tr>
-        </thead>
-        <tbody>
-          <script>
-            let rowNames5 = ['A','B','C','D'];
-            for(let i=0;i<4;i++){
-              document.write('<tr><th>'+rowNames5[i]+'</th>');
-              for(let j=0;j<6;j++){
-                document.write('<td><input type="number" oninput="updateSums()" /></td>');
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
-        </tbody>
-      </table>
-
-      <table id="table6">
-        <caption>Item #6</caption>
-        <thead>
-          <tr>
-            <th rowspan="2"></th>
-            <th colspan="3">공격력</th>
-            <th colspan="2">공격속도</th>
-            <th colspan="1">치명타 피해</th>
-            <th rowspan="2">DPS 기여도 (기본)</th>
-            <th rowspan="2">DPS 기여도 (치명타 적용)</th>
-          </tr>
-          <tr>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>배수 증가</th>
-            <th>수치 증가</th>
-            <th>퍼센트 증가</th>
-            <th>퍼센트 증가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <script>
-            let rowNames6 = ['A','B','C','D','E'];
-            for(let i=0;i<5;i++){
-              document.write('<tr><th>'+rowNames6[i]+'</th>');
-              for(let j=0;j<6;j++){
-                document.write('<td><input type="number" oninput="updateSums()" /></td>');
-              }
-              document.write('<td class="contrib-base"></td><td class="contrib-crit"></td></tr>');
-            }
-          </script>
         </tbody>
       </table>
     </div>
